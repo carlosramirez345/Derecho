@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junta de Conciliación y Arbitraje — Presentación</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Anton (Titulares limpios tipo póster) + Plus Jakarta Sans (Texto claro para proyector) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            peach: '#F9EAD7',
+            lime: '#BFE23A',
+            crimson: '#E10600',
+            forest: '#1A281F',
+            cream: '#FFFDF9'
+          },
+          fontFamily: {
+            display: ['Anton', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #1A281F;
+      color: #1A281F;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Control de diapositivas activas */
+    .slide-card {
+      display: none;
+    }
+    .slide-card.active {
+      display: flex;
+      animation: fadeIn 0.22s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Líneas finas editoriales estilo el póster Orchard Market */
+    .thin-border-t { border-top: 1.5px solid #1A281F; }
+    .thin-border-b { border-bottom: 1.5px solid #1A281F; }
+    .thin-box { border: 1.5px solid #1A281F; }
+
+    /* Modo Proyector Limpio (oculta barras para exponer al salón) */
+    body.projector-mode #topHelpBar,
+    body.projector-mode #scriptBox {
+      display: none !important;
+    }
+
+    /* ==========================================================
+       ESTILOS DE IMPRESIÓN / EXPORTAR A PDF PARA EL PROFESOR
+       Convierte automáticamente las 6 diapositivas en un PDF horizontal
+       ========================================================== */
+    @media print {
+      @page {
+        size: landscape;
+        margin: 0;
+      }
+      body {
+        background: #F9EAD7 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      #slidesWrapper {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .slide-card {
+        display: flex !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-3 sm:p-5">
+
+  <!-- BARRA SUPERIOR DE AYUDA (Se oculta al imprimir o en Modo Proyector) -->
+  <header id="topHelpBar" class="no-print w-full max-w-5xl mx-auto mb-3 flex flex-wrap items-center justify-between gap-2 bg-peach thin-box rounded-xl px-4 py-2.5">
+    <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-1">
+        <span class="w-4 h-4 rounded-full bg-peach thin-box"></span>
+        <span class="w-4 h-4 rounded-full bg-lime thin-box"></span>
+        <span class="w-4 h-4 rounded-full bg-crimson thin-box"></span>
+      </div>
+      <span class="text-xs sm:text-sm font-bold tracking-tight text-forest">
+        Exposición: Junta de Conciliación y Arbitraje
+      </span>
+    </div>
+
+    <div class="flex items-center gap-2 flex-wrap">
+      <button id="btnScriptToggle" type="button" onclick="toggleScript()" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-lime text-forest thin-box hover:opacity-90 transition cursor-pointer">
+        🎙️ Ocultar Guion
+      </button>
+     
+      <button type="button" onclick="printDeck()" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-crimson text-cream thin-box hover:opacity-90 transition cursor-pointer">
+        📄 Guardar en PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL DE LAS 6 DIAPOSITIVAS (16:9 Limpio) -->
+  <main id="slidesWrapper" class="w-full max-w-5xl mx-auto my-auto flex-grow flex items-center justify-center">
+
+    <!-- =====================================================
+         DIAPOSITIVA 1: PORTADA EDITORIAL (Inspirada en Orchard Market)
+         ===================================================== -->
+    <section id="slide-1" class="slide-card active w-full min-h-[480px] md:aspect-[16/9] bg-peach rounded-2xl p-6 sm:p-10 md:p-12 flex-col justify-between relative overflow-hidden shadow-2xl">
+      
+      <!-- Encabezado Editorial Minimalista -->
+      <div class="w-full thin-border-b pb-3 flex items-center justify-between text-[11px] sm:text-xs font-bold tracking-widest uppercase text-forest">
+        <span>✦ FORMACIÓN CÍVICA Y ÉTICA</span>
+        <span class="hidden sm:inline">DERECHO LABORAL EN MÉXICO</span>
+        <span class="px-2.5 py-0.5 rounded-full thin-box bg-lime">01 / 06</span>
+      </div>
+
+      <!-- Contenido Principal con mucho aire -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center my-auto py-6">
+        <div class="md:col-span-7 space-y-4">
+          <p class="text-xs font-bold tracking-widest uppercase text-crimson">
+            HISTORIA Y REFORMA DEL TRABAJO
+          </p>
+          <h1 class="font-display text-5xl sm:text-6xl md:text-7xl leading-[0.95] text-forest uppercase tracking-tight">
+            JUNTA DE <br/>
+            CONCILIACIÓN <br/>
+            Y ARBITRAJE
+          </h1>
+          <p class="text-base sm:text-xl font-medium text-forest/85 max-w-lg pt-1">
+            ¿Quién te defiende cuando trabajas y no te quieren pagar?
+          </p>
+        </div>
+
+        <!-- Geometría limpia inspirada en el póster de referencia -->
+        <div class="md:col-span-5 flex items-center justify-center">
+          <svg class="w-56 h-56 sm:w-64 sm:h-64" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Círculos de color orgánicos -->
+            <circle cx="150" cy="95" r="62" fill="#E10600" fill-opacity="0.9"/>
+            <circle cx="95" cy="145" r="56" fill="#E10600" fill-opacity="0.85"/>
+            <circle cx="155" cy="175" r="48" fill="#BFE23A"/>
+            <!-- Hojas / Acentos en verde lima y bosque -->
+            <path d="M115 42C135 42 148 58 148 75C128 75 115 60 115 42Z" fill="#BFE23A" stroke="#1A281F" stroke-width="1.5"/>
+            <path d="M45 125C65 115 85 125 92 140C72 148 52 140 45 125Z" fill="#1A281F"/>
+            <!-- Círculos de línea fina (el toque exacto de tu referencia) -->
+            <circle cx="142" cy="102" r="66" stroke="#1A281F" stroke-width="1.5"/>
+            <circle cx="102" cy="148" r="60" stroke="#1A281F" stroke-width="1.5"/>
+            <circle cx="152" cy="170" r="52" stroke="#1A281F" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Pie de diapositiva -->
+      <div class="w-full thin-border-t pt-3 flex items-center justify-between text-xs font-semibold text-forest/80">
+        <span>Art. 123 Constitucional</span>
+        <span>Desliza o usa las flechas ➔</span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         DIAPOSITIVA 2: EL PROBLEMA (EL GANCHO)
+         ===================================================== -->
+    <section id="slide-2" class="slide-card w-full min-h-[480px] md:aspect-[16/9] bg-peach rounded-2xl p-6 sm:p-10 md:p-12 flex-col justify-between relative overflow-hidden shadow-2xl">
+      
+      <div class="w-full thin-border-b pb-3 flex items-center justify-between text-[11px] sm:text-xs font-bold tracking-widest uppercase text-forest">
+        <span>✦ EL CASO PRÁCTICO</span>
+        <span class="hidden sm:inline">¿POR QUÉ EXISTÍA?</span>
+        <span class="px-2.5 py-0.5 rounded-full thin-box bg-lime">02 / 06</span>
+      </div>
+
+      <div class="my-auto py-6">
+        <p class="text-xs font-bold tracking-widest uppercase text-crimson mb-2">
+          PONTE EN ESTE LUGAR
+        </p>
+        <h2 class="font-display text-4xl sm:text-5xl text-forest uppercase mb-8">
+          IMAGINA TU PRIMER TRABAJO DE VERANO
+        </h2>
+
+        <!-- 3 pasos limpios con mucho aire -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="thin-box rounded-xl p-5 bg-cream/60">
+            <span class="font-display text-3xl text-crimson block mb-2">01</span>
+            <h3 class="font-bold text-lg text-forest mb-1">Trabajas todo el mes</h3>
+            <p class="text-sm text-forest/80">Entras a ayudar en una cafetería o tienda durante tus vacaciones.</p>
+          </div>
+
+          <div class="thin-box rounded-xl p-5 bg-cream/60">
+            <span class="font-display text-3xl text-crimson block mb-2">02</span>
+            <h3 class="font-bold text-lg text-forest mb-1">No te quieren pagar</h3>
+            <p class="text-sm text-forest/80">Al final del mes, el jefe te despide sin razón y no te da tu sueldo.</p>
+          </div>
+
+          <div class="thin-box rounded-xl p-5 bg-lime">
+            <span class="font-display text-3xl text-forest block mb-2">03</span>
+            <h3 class="font-bold text-lg text-forest mb-1">¿A quién llamas?</h3>
+            <p class="text-sm text-forest font-medium">La policía no atiende sueldos. Necesitas a un <b>árbitro laboral</b>.</p>
+          </div>
+        </div>
+
+        <p class="text-sm sm:text-base font-semibold text-forest flex items-center gap-2">
+          <span class="inline-block w-3 h-3 rounded-full bg-crimson"></span>
+          Durante casi 100 años en México, ese árbitro fue la <b>Junta de Conciliación y Arbitraje</b>.
+        </p>
+      </div>
+
+      <div class="w-full thin-border-t pt-3 flex items-center justify-between text-xs font-semibold text-forest/80">
+        <span>Defensa de los derechos del trabajador</span>
+        <span>Paso 1 de la exposición</span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         DIAPOSITIVA 3: SUS DOS FASES (CONCILIACIÓN Y ARBITRAJE)
+         ===================================================== -->
+    <section id="slide-3" class="slide-card w-full min-h-[480px] md:aspect-[16/9] bg-peach rounded-2xl p-6 sm:p-10 md:p-12 flex-col justify-between relative overflow-hidden shadow-2xl">
+      
+      <div class="w-full thin-border-b pb-3 flex items-center justify-between text-[11px] sm:text-xs font-bold tracking-widest uppercase text-forest">
+        <span>✦ ¿CÓMO FUNCIONABA?</span>
+        <span class="hidden sm:inline">SU NOMBRE LO EXPLICA TODO</span>
+        <span class="px-2.5 py-0.5 rounded-full thin-box bg-lime">03 / 06</span>
+      </div>
+
+      <div class="my-auto py-6">
+        <h2 class="font-display text-4xl sm:text-5xl text-forest uppercase mb-6">
+          SUS 2 FASES PARA RESOLVER UN PLEITO
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Fase 1 -->
+          <div class="thin-box rounded-2xl p-6 sm:p-8 bg-lime flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full thin-box bg-peach inline-block mb-4">
+                FASE 1 • PLATICAR
+              </span>
+              <h3 class="font-display text-3xl sm:text-4xl text-forest uppercase mb-3">
+                1. CONCILIACIÓN
+              </h3>
+              <p class="text-base sm:text-lg text-forest font-medium leading-relaxed">
+                Primero intentaban que el jefe y el trabajador hablaran para <b>hacer las paces</b> y llegar a un acuerdo rápido sin pelear.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fase 2 -->
+          <div class="thin-box rounded-2xl p-6 sm:p-8 bg-crimson text-cream flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full bg-forest text-lime inline-block mb-4">
+                FASE 2 • EL JUICIO
+              </span>
+              <h3 class="font-display text-3xl sm:text-4xl text-cream uppercase mb-3">
+                2. ARBITRAJE
+              </h3>
+              <p class="text-base sm:text-lg text-cream/95 font-medium leading-relaxed mb-4">
+                Si nadie cedía, se hacía un juicio con pruebas y testigos. Al final dictaban una decisión obligatoria llamada <b>LAUDO</b>.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-cream/30 text-xs sm:text-sm font-bold text-lime">
+              ★ Dato clave: Su sentencia oficial se llamaba “Laudo”.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full thin-border-t pt-3 flex items-center justify-between text-xs font-semibold text-forest/80">
+        <span>Conciliar = Acordar  |  Arbitrar = Juzgar</span>
+        <span>Palabra clave: Laudo</span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         DIAPOSITIVA 4: FÓRMULA DE 3 (TRIPARTITA)
+         ===================================================== -->
+    <section id="slide-4" class="slide-card w-full min-h-[480px] md:aspect-[16/9] bg-peach rounded-2xl p-6 sm:p-10 md:p-12 flex-col justify-between relative overflow-hidden shadow-2xl">
+      
+      <div class="w-full thin-border-b pb-3 flex items-center justify-between text-[11px] sm:text-xs font-bold tracking-widest uppercase text-forest">
+        <span>✦ ¿QUIÉNES ERAN LOS JUECES?</span>
+        <span class="hidden sm:inline">EQUIPO TRIPARTITA</span>
+        <span class="px-2.5 py-0.5 rounded-full thin-box bg-lime">04 / 06</span>
+      </div>
+
+      <div class="my-auto py-4">
+        <p class="text-xs font-bold tracking-widest uppercase text-crimson mb-1">
+          PARA QUE NADIE HICIERA TRAMPA
+        </p>
+        <h2 class="font-display text-4xl sm:text-5xl text-forest uppercase mb-6">
+          LA FÓRMULA DE 3 (INTEGRACIÓN TRIPARTITA)
+        </h2>
+
+        <!-- 3 Columnas muy limpias -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+          <div class="thin-box rounded-xl p-5 bg-cream/70">
+            <span class="w-8 h-8 rounded-full bg-lime thin-box flex items-center justify-center font-bold text-sm mb-3">1</span>
+            <h3 class="font-bold text-lg text-forest mb-1">Trabajadores</h3>
+            <p class="text-sm text-forest/80">Un representante de los empleados que defendía sus derechos.</p>
+          </div>
+
+          <div class="thin-box rounded-xl p-5 bg-cream/70">
+            <span class="w-8 h-8 rounded-full bg-crimson text-cream thin-box flex items-center justify-center font-bold text-sm mb-3">2</span>
+            <h3 class="font-bold text-lg text-forest mb-1">Patrones</h3>
+            <p class="text-sm text-forest/80">Un representante de los empresarios que cuidaba a los negocios.</p>
+          </div>
+
+          <div class="thin-box rounded-xl p-5 bg-lime">
+            <span class="w-8 h-8 rounded-full bg-forest text-lime flex items-center justify-center font-bold text-sm mb-3">3</span>
+            <h3 class="font-bold text-lg text-forest mb-1">Gobierno</h3>
+            <p class="text-sm text-forest font-medium">El Presidente de la Junta. Ponía orden y desempataba la votación.</p>
+          </div>
+        </div>
+
+        <!-- Diferencia Local vs Federal simple -->
+        <div class="thin-box rounded-xl p-4 bg-forest text-peach flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs sm:text-sm">
+          <div>
+            <span class="text-lime font-bold">● JUNTA LOCAL:</span> Negocios de tu ciudad (tiendas, restaurantes, talleres).
+          </div>
+          <div>
+            <span class="text-crimson bg-cream px-1.5 py-0.5 rounded font-bold">● JUNTA FEDERAL:</span> Industrias gigantes (Pemex, CFE, aerolíneas, bancos).
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full thin-border-t pt-3 flex items-center justify-between text-xs font-semibold text-forest/80">
+        <span>Tripartita = 3 partes votando</span>
+        <span>Local vs. Federal</span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         DIAPOSITIVA 5: EL GIRO (ANTES VS. HOY)
+         ===================================================== -->
+    <section id="slide-5" class="slide-card w-full min-h-[480px] md:aspect-[16/9] bg-peach rounded-2xl p-6 sm:p-10 md:p-12 flex-col justify-between relative overflow-hidden shadow-2xl">
+      
+      <div class="w-full thin-border-b pb-3 flex items-center justify-between text-[11px] sm:text-xs font-bold tracking-widest uppercase text-forest">
+        <span>✦ EL GIRO DE LA HISTORIA</span>
+        <span class="hidden sm:inline">REFORMA LABORAL</span>
+        <span class="px-2.5 py-0.5 rounded-full thin-box bg-lime">05 / 06</span>
+      </div>
+
+      <div class="my-auto py-5">
+        <p class="text-xs font-bold tracking-widest uppercase text-crimson mb-1">
+          ¿POR QUÉ CERRARON PARA CASOS NUEVOS?
+        </p>
+        <h2 class="font-display text-4xl sm:text-5xl text-forest uppercase mb-6">
+          SE VOLVIERON MUY LENTAS: ANTES VS. AHORA
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Antes -->
+          <div class="thin-box rounded-2xl p-6 bg-cream/80">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-display text-2xl sm:text-3xl text-crimson uppercase">ANTES (LAS JUNTAS)</h3>
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-peach thin-box">4 a 8 años</span>
+            </div>
+            <ul class="space-y-2.5 text-sm sm:text-base text-forest">
+              <li>• Se llenaron de millones de expedientes en papel.</li>
+              <li>• Muchos trabajadores se rendían por cansancio.</li>
+              <li>• <b>Hoy:</b> Ya cerraron para demandas nuevas (solo terminan juicios viejos pendientes).</li>
+            </ul>
+          </div>
+
+          <!-- Ahora -->
+          <div class="thin-box rounded-2xl p-6 bg-lime">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-display text-2xl sm:text-3xl text-forest uppercase">HOY (NUEVO SISTEMA)</h3>
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-forest text-lime">Menos de 45 días</span>
+            </div>
+            <ul class="space-y-2.5 text-sm sm:text-base text-forest font-medium">
+              <li>• <b>1° Centros de Conciliación:</b> Obligatorio ir a dialogar primero (resuelve el 75% de los casos).</li>
+              <li>• <b>2° Tribunales Laborales:</b> Si hay juicio, ahora decide un <b>Juez del Poder Judicial</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full thin-border-t pt-3 flex items-center justify-between text-xs font-semibold text-forest/80">
+        <span>Evolución de la justicia laboral en México</span>
+        <span>Juicios orales y rápidos</span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         DIAPOSITIVA 6: PREGUNTA FINAL AL SALÓN (INTERACTIVA)
+         ===================================================== -->
+    <section id="slide-6" class="slide-card w-full min-h-[480px] md:aspect-[16/9] bg-peach rounded-2xl p-6 sm:p-10 md:p-12 flex-col justify-between relative overflow-hidden shadow-2xl">
+      
+      <div class="w-full thin-border-b pb-3 flex items-center justify-between text-[11px] sm:text-xs font-bold tracking-widest uppercase text-forest">
+        <span>✦ CONCLUSIÓN Y CIERRE</span>
+        <span class="hidden sm:inline">PARTICIPACIÓN DEL SALÓN</span>
+        <span class="px-2.5 py-0.5 rounded-full thin-box bg-lime">06 / 06</span>
+      </div>
+
+      <div class="my-auto py-4 text-center max-w-3xl mx-auto w-full">
+        <p class="text-xs font-bold tracking-widest uppercase text-crimson mb-2">
+          PREGUNTA PARA EL GRUPO (HAZ CLIC EN LA QUE ELIJAN)
+        </p>
+        <h2 class="font-display text-3xl sm:text-5xl text-forest uppercase mb-6">
+          SI TE DEBEN $3,000 PESOS DE TU SUELDO... ¿QUÉ PREFIERES?
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-left mb-5">
+          <!-- Opción A -->
+          <button type="button" onclick="selectChoice('A')" id="choiceA" class="thin-box rounded-2xl p-5 bg-cream hover:bg-lime/40 transition cursor-pointer text-left">
+            <span class="text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-crimson text-cream inline-block mb-2">
+              OPCIÓN A • JUICIO LARGO
+            </span>
+            <h3 class="font-bold text-lg sm:text-xl text-forest mb-1">
+              Esperar 4 años en juicio para ganar $10,000 pesos
+            </h3>
+            <p class="text-xs sm:text-sm text-forest/75">
+              Así pasaba antes en las Juntas de Conciliación.
+            </p>
+          </button>
+
+          <!-- Opción B -->
+          <button type="button" onclick="selectChoice('B')" id="choiceB" class="thin-box rounded-2xl p-5 bg-lime hover:brightness-95 transition cursor-pointer text-left">
+            <span class="text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-forest text-lime inline-block mb-2">
+              OPCIÓN B • CONCILIACIÓN HOY
+            </span>
+            <h3 class="font-bold text-lg sm:text-xl text-forest mb-1">
+              Recibir $2,500 seguros en 2 semanas platicando
+            </h3>
+            <p class="text-xs sm:text-sm text-forest/85">
+              Así funciona el nuevo sistema de Conciliación.
+            </p>
+          </button>
+        </div>
+
+        <!-- Respuesta al hacer clic -->
+        <div id="choiceFeedback" class="thin-box rounded-xl p-4 bg-forest text-peach text-xs sm:text-sm font-medium">
+          👆 Haz clic en una opción según lo que voten tus compañeros. ¡Gracias por su atención!
+        </div>
+      </div>
+
+      <div class="w-full thin-border-t pt-3 flex items-center justify-between text-xs font-semibold text-forest/80">
+        <span>¡Gracias por su atención!</span>
+        <span>¿Preguntas o comentarios?</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GUION PARA EXPONER (Para leer qué decir en cada diapositiva) -->
+  <aside id="scriptBox" class="no-print w-full max-w-5xl mx-auto mt-3 bg-cream thin-box rounded-xl p-3.5 sm:p-4">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-crimson">
+        🎙️ LO QUE PUEDES DECIR EN ESTA DIAPOSITIVA:
+      </span>
+      <span id="scriptStepLabel" class="text-xs font-bold text-forest/70">Diapositiva 1 de 6</span>
+    </div>
+    <p id="scriptText" class="text-sm sm:text-base font-medium text-forest leading-relaxed">
+      <!-- Se actualiza con JS -->
+    </p>
+  </aside>
+
+  <!-- BARRA INFERIOR DE CONTROLES (Funciona al 100%) -->
+  <footer class="no-print w-full max-w-5xl mx-auto mt-3 flex flex-wrap items-center justify-between gap-3 bg-peach thin-box rounded-xl px-4 py-2.5">
+    
+    <!-- Botones Anterior / Siguiente -->
+    <div class="flex items-center gap-2">
+      <button type="button" onclick="prevSlide()" class="px-4 py-2 rounded-lg bg-cream hover:bg-lime text-forest font-bold text-xs sm:text-sm thin-box transition cursor-pointer active:scale-95">
+        ◀ Anterior
+      </button>
+      <button type="button" onclick="nextSlide()" class="px-4 py-2 rounded-lg bg-lime hover:brightness-95 text-forest font-bold text-xs sm:text-sm thin-box transition cursor-pointer active:scale-95">
+        Siguiente ▶
+      </button>
+    </div>
+
+    <!-- Números de diapositiva directos -->
+    <div class="flex items-center gap-1.5">
+      <button type="button" onclick="goSlide(1)" id="dot-1" class="w-7 h-7 rounded-full text-xs font-bold thin-box cursor-pointer">1</button>
+      <button type="button" onclick="goSlide(2)" id="dot-2" class="w-7 h-7 rounded-full text-xs font-bold thin-box cursor-pointer">2</button>
+      <button type="button" onclick="goSlide(3)" id="dot-3" class="w-7 h-7 rounded-full text-xs font-bold thin-box cursor-pointer">3</button>
+      <button type="button" onclick="goSlide(4)" id="dot-4" class="w-7 h-7 rounded-full text-xs font-bold thin-box cursor-pointer">4</button>
+      <button type="button" onclick="goSlide(5)" id="dot-5" class="w-7 h-7 rounded-full text-xs font-bold thin-box cursor-pointer">5</button>
+      <button type="button" onclick="goSlide(6)" id="dot-6" class="w-7 h-7 rounded-full text-xs font-bold thin-box cursor-pointer">6</button>
+    </div>
+
+    <!-- Modo Proyector Limpio -->
+    <button type="button" id="btnProjector" onclick="toggleProjectorMode()" class="px-3 py-2 rounded-lg bg-forest text-peach font-bold text-xs sm:text-sm hover:opacity-90 transition cursor-pointer">
+      🖥️ Modo Proyector (Limpio)
+    </button>
+  </footer>
+
+  <!-- MODAL DE AYUDA: ¿CÓMO SE LO LLEVO AL PROFE? -->
+  <div id="helpModal" class="no-print fixed inset-0 bg-forest/80 hidden items-center justify-center p-4 z-50">
+    <div class="bg-peach thin-box rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-forest/20 pb-3">
+        <h3 class="font-display text-2xl text-forest uppercase">¿Cómo proyectarlo en tu escuela?</h3>
+        <button type="button" onclick="closeHelpModal()" class="text-sm font-bold px-2.5 py-1 rounded bg-crimson text-cream cursor-pointer">✕</button>
+      </div>
+      <div class="space-y-3 text-sm text-forest leading-relaxed">
+        <p>
+          <b>Opción 1: Guardarlo como PDF (La más fácil y segura)</b><br/>
+          Haz clic en el botón rojo <b>“📄 Guardar en PDF”</b> arriba a la derecha y elige <i>“Guardar como PDF”</i>. Se creará un archivo PDF con tus 6 diapositivas listas para mandar por WhatsApp, correo o llevar en USB sin necesitar internet.
+        </p>
+        <p>
+          <b>Opción 2: Usar el “Modo Proyector” aquí mismo</b><br/>
+          Si conectas tu compu o celular al proyector, toca el botón <b>“🖥️ Modo Proyector”</b> abajo a la derecha. Eso esconde tu guion para que el salón solo vea las diapositivas limpias.
+        </p>
+      </div>
+      <div class="pt-2 text-right">
+        <button type="button" onclick="closeHelpModal()" class="px-4 py-2 rounded-lg bg-lime text-forest font-bold text-xs thin-box cursor-pointer">
+          ¡Entendido!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var currentSlide = 1;
+    var totalSlides = 6;
+
+    var scripts = {
+      1: "“¡Buenos días! Hoy les voy a explicar qué es la Junta de Conciliación y Arbitraje. Imaginen que es el árbitro que defendía a los trabajadores en México durante casi un siglo, y hoy veremos cómo funcionaba y por qué evolucionó.”",
+      2: "“Imaginen que entran a trabajar en el verano a una cafetería y al final del mes el jefe los corre sin pagarles. Si llaman a la policía, les dirán que no es un robo común. Para eso existía este árbitro: la Junta de Conciliación y Arbitraje.”",
+      3: "“Su nombre explica sus dos fases: Primero la Conciliación, que es platicar para llegar a un acuerdo rápido. Y segundo el Arbitraje: si nadie cede, se hace un juicio con pruebas y se dicta un LAUDO, que es como se le llama a la sentencia laboral.”",
+      4: "“Para que fuera justo, la Junta no era un solo juez, sino un equipo tripartita de 3 personas: un representante de los trabajadores, uno de los patrones y uno del Gobierno. Además había Junta Local para negocios normales y Junta Federal para empresas gigantes.”",
+      5: "“Aquí viene el dato más importante: ¡las Juntas ya cerraron para casos nuevos! Como tardaban de 4 a 8 años en resolver un juicio, con la Reforma Laboral ahora vamos primero al Centro de Conciliación, donde casi todo se resuelve en menos de 45 días.”",
+      6: "“Para cerrar, les pregunto: si les debieran $3,000 pesos, ¿preferirían esperar 4 años en juicio por $10,000, o recibir $2,500 seguros en dos semanas? (Haz clic en la opción que elija tu salón). ¡Por eso hoy la conciliación es tan importante! Gracias.”"
+    };
+
+    function renderSlide() {
+      for (var i = 1; i <= totalSlides; i++) {
+        var slideEl = document.getElementById('slide-' + i);
+        var dotEl = document.getElementById('dot-' + i);
+        if (i === currentSlide) {
+          slideEl.classList.add('active');
+          dotEl.className = 'w-7 h-7 rounded-full text-xs font-bold thin-box bg-crimson text-cream cursor-pointer';
+        } else {
+          slideEl.classList.remove('active');
+          dotEl.className = 'w-7 h-7 rounded-full text-xs font-bold thin-box bg-cream text-forest hover:bg-lime cursor-pointer';
+        }
+      }
+
+      document.getElementById('scriptStepLabel').textContent = 'Diapositiva ' + currentSlide + ' de ' + totalSlides;
+      document.getElementById('scriptText').textContent = scripts[currentSlide];
+    }
+
+    function nextSlide() {
+      currentSlide = currentSlide < totalSlides ? currentSlide + 1 : 1;
+      renderSlide();
+    }
+
+    function prevSlide() {
+      currentSlide = currentSlide > 1 ? currentSlide - 1 : totalSlides;
+      renderSlide();
+    }
+
+    function goSlide(num) {
+      currentSlide = num;
+      renderSlide();
+    }
+
+    function toggleScript() {
+      var box = document.getElementById('scriptBox');
+      var btn = document.getElementById('btnScriptToggle');
+      if (box.style.display === 'none') {
+        box.style.display = 'block';
+        btn.textContent = '🎙️ Ocultar Guion';
+      } else {
+        box.style.display = 'none';
+        btn.textContent = '🎙️ Ver Guion';
+      }
+    }
+
+    function toggleProjectorMode() {
+      var body = document.body;
+      var btn = document.getElementById('btnProjector');
+      body.classList.toggle('projector-mode');
+      if (body.classList.contains('projector-mode')) {
+        btn.textContent = '🔙 Salir de Modo Proyector';
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(function(){});
+        }
+      } else {
+        btn.textContent = '🖥️ Modo Proyector (Limpio)';
+        if (document.fullscreenElement && document.exitFullscreen) {
+          document.exitFullscreen().catch(function(){});
+        }
+      }
+    }
+
+    function printDeck() {
+      window.print();
+    }
+
+    function openHelpModal() {
+      var modal = document.getElementById('helpModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeHelpModal() {
+      var modal = document.getElementById('helpModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function selectChoice(option) {
+      var feedback = document.getElementById('choiceFeedback');
+      var btnA = document.getElementById('choiceA');
+      var btnB = document.getElementById('choiceB');
+
+      if (option === 'A') {
+        btnA.style.outline = '3px solid #E10600';
+        btnB.style.outline = 'none';
+        feedback.innerHTML = '⚖️ <b>Elegiste Opción A:</b> Así funcionaban las viejas Juntas; muchos trabajadores abandonaban el caso porque 4 años era demasiado tiempo.';
+      } else {
+        btnB.style.outline = '3px solid #1A281F';
+        btnA.style.outline = 'none';
+        feedback.innerHTML = '✅ <b>Elegiste Opción B:</b> ¡Exacto! Por eso la Reforma Laboral creó los nuevos Centros de Conciliación para arreglar rápido sin esperar años.';
+      }
+    }
+
+    // Teclado: Flechas izquierda / derecha / barra espaciadora
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+
+    // Inicializar al cargar
+    renderSlide();
+  </script>
+</body>
+</html>
